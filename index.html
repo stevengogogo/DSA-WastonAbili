@@ -101,7 +101,78 @@ Plan</h1>
 Implementation of Double linked list</h1>
 <p><img src="img/Plan.png" alt="" class="inline"/></p>
 <p><a href="https://gist.github.com/mycodeschool/7429492">https://gist.github.com/mycodeschool/7429492</a></p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<ul>
+<li>遇到 <code>R</code>:<ul>
+<li>如果 <code>r</code> 是 NULL: 結束</li>
+<li>從這裡開始用 <code>l</code> 讀</li>
+</ul>
+</li>
+<li>遇到 <code>L</code><ul>
+<li>如果 <code>l</code> 是 NULL: 結束</li>
+<li>從這裡開始用 <code>r</code> 讀</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+List</h2>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>list{</div>
+<div class="line">    node* start</div>
+<div class="line">    node* end</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+node</h2>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>node{</div>
+<div class="line">    <span class="keywordtype">int</span> data</div>
+<div class="line">    node* neighbor[2]</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+Flag Data</h2>
+<ul>
+<li><code>flag_r</code><ul>
+<li>going right <code>[1]</code></li>
+</ul>
+</li>
+<li><code>flag_l</code><ul>
+<li>going left <code>[0]</code></li>
+</ul>
+</li>
+<li><code>buffer</code><ul>
+<li>do nothing / ignore</li>
+</ul>
+</li>
+</ul>
+<div class="fragment"><div class="line">update_flag(<span class="keywordtype">int</span>* flag, data){</div>
+<div class="line">    <span class="keywordflow">if</span> (data == flag_r){</div>
+<div class="line">        *flag = flag_r</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data == flag_l){</div>
+<div class="line">        *flag = flag_l</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data == buffer){</div>
+<div class="line">        <span class="keywordflow">do</span> nothing</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> {</div>
+<div class="line">        <span class="keywordflow">do</span> nothing</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><ul>
+<li>除了第一次外 (default <code>flag= flag_r</code>), 讀到 <code>flag data</code> 時要確認<ul>
+<li>兩邊都不是 <code>NULL</code><ul>
+<li>用新的 flag 繼續</li>
+</ul>
+</li>
+<li>有一邊是 <code>NULL</code><ul>
+<li>結束</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>特性<ul>
+<li>Every list is bounded by node with flag data, and paired with <code>L</code> and <code>R</code></li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md9"></a>
 Enter</h1>
 <p><img src="img/Enter.png" alt="" class="inline"/></p>
 <ul>
@@ -119,7 +190,7 @@ Enter</h1>
 </ul>
 </li>
 </ul>
-<div class="fragment"><div class="line">EnterLine(list*,log)</div>
+<div class="fragment"><div class="line">function EnterLine(list*,log)</div>
 <div class="line"> </div>
 <div class="line">int flag</div>
 <div class="line"> </div>
@@ -130,9 +201,12 @@ Enter</h1>
 <div class="line">ptr_last = (list-&gt;end.prev == NULL) ? list-&gt;end.next</div>
 <div class="line"> </div>
 <div class="line">end</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+Migrate</h1>
+<p><img src="img/Migrate.png" alt="" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Reverse a doubly linked list</h1>
-<h1><a class="anchor" id="autotoc_md8"></a>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Memory</h1>
 <ul>
 <li>Node<ul>
@@ -146,7 +220,7 @@ Memory</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 References</h1>
 <ol type="1">
 <li>XOR linked list. [<a href="https://en.wikipedia.org/wiki/XOR_linked_list">wiki</a>] </li>
