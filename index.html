@@ -67,7 +67,90 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
+Requirement</h1>
+<ul>
+<li>Time limit: 1s</li>
+<li>Mem Limit: 65536 KB</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Constraint</h1>
+<ul>
+<li>n of cargos: max 10e6</li>
+<li>k of lines: 10e3</li>
+<li>l is the index: [0,10e4]</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Printout</h1>
+<ul>
+<li>print logs from 0-(k-1) lines</li>
+<li>skip null line</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
 Plan</h1>
+<p><img src="img/DLL.jpg" alt="" class="inline"/></p>
+<ul>
+<li>Reader<ul>
+<li>Parse a string</li>
+<li>Parse an int</li>
+<li>Parse an int</li>
+<li>Terminate for EOF</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md5"></a>
+Implementation of Double linked list</h1>
+<p><img src="img/Plan.png" alt="" class="inline"/></p>
+<p><a href="https://gist.github.com/mycodeschool/7429492">https://gist.github.com/mycodeschool/7429492</a></p>
+<h1><a class="anchor" id="autotoc_md6"></a>
+Enter</h1>
+<p><img src="img/Enter.png" alt="" class="inline"/></p>
+<ul>
+<li>New node<ul>
+<li>link <code>.prev</code> to <code>last node</code></li>
+<li>link <code>.next</code> to <code>End</code></li>
+</ul>
+</li>
+<li>End node<ul>
+<li>Link <code>.prev</code> to <code>new node</code></li>
+</ul>
+</li>
+<li>Last node<ul>
+<li>Link <code>.next</code> to <code>new node</code></li>
+</ul>
+</li>
+</ul>
+<div class="fragment"><div class="line">EnterLine(list*,log)</div>
+<div class="line"> </div>
+<div class="line">int flag</div>
+<div class="line"> </div>
+<div class="line">ptr_end  = list-&gt;end</div>
+<div class="line"> </div>
+<div class="line"># check direction</div>
+<div class="line"> </div>
+<div class="line">ptr_last = (list-&gt;end.prev == NULL) ? list-&gt;end.next</div>
+<div class="line"> </div>
+<div class="line">end</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md7"></a>
+Reverse a doubly linked list</h1>
+<h1><a class="anchor" id="autotoc_md8"></a>
+Memory</h1>
+<ul>
+<li>Node<ul>
+<li>1 x <code>int</code>: 4 byte</li>
+<li>2 x <code>pointer</code>: 8 bytpe</li>
+<li>Sum: 20 byte</li>
+<li>10e6 nodes:<ul>
+<li>20 MB</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md9"></a>
+References</h1>
+<ol type="1">
+<li>XOR linked list. [<a href="https://en.wikipedia.org/wiki/XOR_linked_list">wiki</a>] </li>
+</ol>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
