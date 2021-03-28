@@ -55,8 +55,13 @@ https://gist.github.com/mycodeschool/7429492
 ```pseudo
 EnterLine(list*,log)
 
+int flag
+
 ptr_end  = list->end
-ptr_last = list->end.prev
+
+# check direction
+
+ptr_last = (list->end.prev == NULL) ? list->end.next
 
 end
 ```
