@@ -103,17 +103,22 @@ Implementation of Double linked list</h1>
 <p><a href="https://gist.github.com/mycodeschool/7429492">https://gist.github.com/mycodeschool/7429492</a></p>
 <h2><a class="anchor" id="autotoc_md6"></a>
 List</h2>
-<div class="fragment"><div class="line"><span class="keyword">struct </span>list{</div>
-<div class="line">    node* start</div>
-<div class="line">    node* end</div>
+<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="structlist.html">list</a>{</div>
+<div class="line">    <a class="code" href="struct__node.html">node</a>* start</div>
+<div class="line">    <a class="code" href="struct__node.html">node</a>* end</div>
 <div class="line">}</div>
+<div class="ttc" id="astruct__node_html"><div class="ttname"><a href="struct__node.html">_node</a></div><div class="ttdef"><b>Definition:</b> list.h:10</div></div>
+<div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> list.h:15</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
-node</h2>
-<div class="fragment"><div class="line"><span class="keyword">struct </span>node{</div>
-<div class="line">    <span class="keywordtype">int</span> data</div>
-<div class="line">    node* neighbor[2] # [left_ptr, right_ptr]</div>
-<div class="line">}</div>
+Array of lists</h2>
+<div class="fragment"><div class="line">list[1000]</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+node</h2>
+<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="struct__node.html">node</a>{</div>
+<div class="line">    <span class="keywordtype">int</span> data</div>
+<div class="line">    <a class="code" href="struct__node.html">node</a>* neighbor[2] # [left_ptr, right_ptr]</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Read a list</h2>
 <div class="fragment"><div class="line">function read(list)</div>
 <div class="line">    if list.start != NULL { # 至少有一個</div>
@@ -128,19 +133,20 @@ Read a list</h2>
 <div class="line"> </div>
 <div class="line">  flag = get_node_ptr_from_terminal(node) # 得到下個 node 的方向</div>
 <div class="line">  </div>
+<div class="line">  print(node)</div>
+<div class="line"> </div>
 <div class="line">  if (flag== -1){ #兩邊都是 NULL</div>
-<div class="line">    print(node.data)</div>
 <div class="line">    return 0</div>
 <div class="line">  }</div>
 <div class="line">  </div>
-<div class="line">  ptr_pre = &amp;first_node # 第一個 node 的位置</div>
+<div class="line">  ptr_pre = &amp;node # 第一個 node 的位置</div>
 <div class="line">  </div>
 <div class="line">  while(node.neighbor[flag] != NULL){ # terminate at NULL</div>
 <div class="line">    # move to new node</div>
 <div class="line">    node = node.neihbor[flag]</div>
 <div class="line"> </div>
 <div class="line">    # Print </div>
-<div class="line">    print(node.data)</div>
+<div class="line">    print(node)</div>
 <div class="line"> </div>
 <div class="line">    # Update direction</div>
 <div class="line">    if (node.neighbor[flag] == ptr_pre){ # case: turn back</div>
@@ -169,9 +175,8 @@ Read a list</h2>
 <div class="line"> </div>
 <div class="line">  if left != NULL and right != NULL</div>
 <div class="line">    return Error</div>
-<div class="line">    </div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
 Enter</h1>
 <p><img src="img/Enter.png" alt="" class="inline"/></p>
 <ul>
@@ -213,7 +218,7 @@ Enter</h1>
 <div class="line">  right = node.neighbor[1]</div>
 <div class="line"> </div>
 <div class="line">  if left==NULL and right == NULL</div>
-<div class="line">    return Error</div>
+<div class="line">    return 2</div>
 <div class="line"> </div>
 <div class="line">  if left != NULL and right == NULL</div>
 <div class="line">    return 1</div>
@@ -224,7 +229,7 @@ Enter</h1>
 <div class="line">  if left != NULL and right != NULL</div>
 <div class="line">    return -1</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md11"></a>
 Migrate</h1>
 <p><img src="img/Migrate.png" alt="" class="inline"/></p>
 <div class="fragment"><div class="line">function migrate(list src, list dst){</div>
@@ -248,7 +253,7 @@ Migrate</h1>
 <div class="line">  src.start = NULL</div>
 <div class="line">  src.end = NULL</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
 Leave</h1>
 <p><img src="img/Leave.png" alt="" class="inline"/></p>
 <div class="fragment"><div class="line">function leave(list){</div>
@@ -260,7 +265,7 @@ Leave</h1>
 <div class="line"> </div>
 <div class="line">  kill(end_node)</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md13"></a>
 Memory</h1>
 <ul>
 <li>Node<ul>
@@ -274,7 +279,7 @@ Memory</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 References</h1>
 <ol type="1">
 <li>XOR linked list. [<a href="https://en.wikipedia.org/wiki/XOR_linked_list">wiki</a>]</li>
