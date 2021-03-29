@@ -115,41 +115,152 @@ node</h2>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Read a list</h2>
-<h1><a class="anchor" id="autotoc_md9"></a>
+<div class="fragment"><div class="line">function read(list)</div>
+<div class="line">    if list.start != NULL { # 至少有一個</div>
+<div class="line">      iter_read(first_node)</div>
+<div class="line">    }</div>
+<div class="line">    else { # 空集合</div>
+<div class="line">      return 0</div>
+<div class="line">    }</div>
+<div class="line">end</div>
+<div class="line"> </div>
+<div class="line">function iter_read(node){</div>
+<div class="line"> </div>
+<div class="line">  flag = get_node_ptr_from_terminal(node) # 得到下個 node 的方向</div>
+<div class="line">  </div>
+<div class="line">  if (flag== -1){ #兩邊都是 NULL</div>
+<div class="line">    print(node.data)</div>
+<div class="line">    return 0</div>
+<div class="line">  }</div>
+<div class="line">  </div>
+<div class="line">  ptr_pre = &amp;first_node # 第一個 node 的位置</div>
+<div class="line">  </div>
+<div class="line">  while(node.neighbor[flag] != NULL){ # terminate at NULL</div>
+<div class="line">    # move to new node</div>
+<div class="line">    node = node.neihbor[flag]</div>
+<div class="line"> </div>
+<div class="line">    # Print </div>
+<div class="line">    print(node.data)</div>
+<div class="line"> </div>
+<div class="line">    # Update direction</div>
+<div class="line">    if (node.neighbor[flag] == ptr_pre){ # case: turn back</div>
+<div class="line">        flag = flag^1</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    # Move</div>
+<div class="line">    ptr_pre = &amp;node</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">function get_node_ptr_from_terminal(node){</div>
+<div class="line"> </div>
+<div class="line">  left =  node.neigbhor[0] </div>
+<div class="line">  right = node.neighbor[1]</div>
+<div class="line"> </div>
+<div class="line">  if left==NULL and right == NULL</div>
+<div class="line">    return -1</div>
+<div class="line"> </div>
+<div class="line">  if left != NULL and right == NULL</div>
+<div class="line">    return 0</div>
+<div class="line">  </div>
+<div class="line">  if left == NULL and right != NULL</div>
+<div class="line">    return 1</div>
+<div class="line"> </div>
+<div class="line">  if left != NULL and right != NULL</div>
+<div class="line">    return Error</div>
+<div class="line">    </div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
 Enter</h1>
 <p><img src="img/Enter.png" alt="" class="inline"/></p>
 <ul>
-<li>New node<ul>
-<li>link <code>.prev</code> to <code>last node</code></li>
-<li>link <code>.next</code> to <code>End</code></li>
-</ul>
-</li>
+<li>Pointers<ul>
 <li>End node<ul>
-<li>Link <code>.prev</code> to <code>new node</code></li>
+<li><code>NULL</code> to <code>new node</code></li>
 </ul>
 </li>
-<li>Last node<ul>
-<li>Link <code>.next</code> to <code>new node</code></li>
+<li>new node<ul>
+<li>one -&gt; End node</li>
+<li>the other -&gt; <code>NULL</code></li>
 </ul>
 </li>
 </ul>
-<div class="fragment"><div class="line">function EnterLine(list*,log)</div>
+</li>
+</ul>
+<div class="fragment"><div class="line">function EnterLine(list, new_node)</div>
 <div class="line"> </div>
-<div class="line">int flag</div>
+<div class="line">  if list.end == NULL { # Enter an empty line </div>
+<div class="line">    list.start = &amp;new_node</div>
+<div class="line">    list.end = &amp;new_node</div>
+<div class="line">  }</div>
 <div class="line"> </div>
-<div class="line">ptr_end  = list-&gt;end</div>
+<div class="line">  end_flag = get_NULL_from_terminal(list.end)</div>
 <div class="line"> </div>
-<div class="line"># check direction</div>
+<div class="line">  # Pointer Assignment</div>
+<div class="line">  list.end.neighbor[end_flag] = &amp;new_node</div>
+<div class="line">  new_node.neighbor[end_flag] = NULL</div>
+<div class="line">  new_node.neighbor[end_flag^1] = list.end</div>
 <div class="line"> </div>
-<div class="line">ptr_last = (list-&gt;end.prev == NULL) ? list-&gt;end.next</div>
-<div class="line"> </div>
+<div class="line">  # Update END</div>
+<div class="line">  list.end = &amp;new_node</div>
 <div class="line">end</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">function get_NULL_from_terminal(node){</div>
+<div class="line"> </div>
+<div class="line">  left =  node.neigbhor[0] </div>
+<div class="line">  right = node.neighbor[1]</div>
+<div class="line"> </div>
+<div class="line">  if left==NULL and right == NULL</div>
+<div class="line">    return Error</div>
+<div class="line"> </div>
+<div class="line">  if left != NULL and right == NULL</div>
+<div class="line">    return 1</div>
+<div class="line">  </div>
+<div class="line">  if left == NULL and right != NULL</div>
+<div class="line">    return 0</div>
+<div class="line"> </div>
+<div class="line">  if left != NULL and right != NULL</div>
+<div class="line">    return -1</div>
+<div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md10"></a>
 Migrate</h1>
 <p><img src="img/Migrate.png" alt="" class="inline"/></p>
-<h1><a class="anchor" id="autotoc_md11"></a>
-Reverse a doubly linked list</h1>
-<h1><a class="anchor" id="autotoc_md12"></a>
+<div class="fragment"><div class="line">function migrate(list src, list dst){</div>
+<div class="line"> </div>
+<div class="line">  # Locate ends</div>
+<div class="line">  end_src = src.end</div>
+<div class="line">  end_dst = dst.end</div>
+<div class="line"> </div>
+<div class="line">  # Get flag</div>
+<div class="line">  src_flag = get_NULL_from_terminal(end_src)</div>
+<div class="line">  dst_flag = get_NULL_from_terminal(end_dst)</div>
+<div class="line"> </div>
+<div class="line">  # Bridging</div>
+<div class="line">  end_src.neighbor[src_flag] = end_dst</div>
+<div class="line">  end_dst.negihbor[dst_flag] = end_src</div>
+<div class="line"> </div>
+<div class="line">  # Relocate the terminals</div>
+<div class="line">  dst.end = src.start</div>
+<div class="line"> </div>
+<div class="line">  # Clean up src </div>
+<div class="line">  src.start = NULL</div>
+<div class="line">  src.end = NULL</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md11"></a>
+Leave</h1>
+<p><img src="img/Leave.png" alt="" class="inline"/></p>
+<div class="fragment"><div class="line">function leave(list){</div>
+<div class="line">  end_node = list.end</div>
+<div class="line"> </div>
+<div class="line">  flag = get_node_ptr_from_terminal(end_node)</div>
+<div class="line">  prev_node = end_node.neighbor[flag]</div>
+<div class="line">  list.end =  prev_node</div>
+<div class="line"> </div>
+<div class="line">  kill(end_node)</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
 Memory</h1>
 <ul>
 <li>Node<ul>
