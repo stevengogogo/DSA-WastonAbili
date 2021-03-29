@@ -36,12 +36,7 @@
 
 https://gist.github.com/mycodeschool/7429492
 
-- 遇到 `R`: 
-  - 如果 `r` 是 NULL: 結束
-  - 從這裡開始用 `l` 讀
-- 遇到 `L`
-  - 如果 `l` 是 NULL: 結束 
-  - 從這裡開始用 `r` 讀
+
 
 ### List
 
@@ -58,44 +53,11 @@ struct list{
 ```c
 struct node{
     int data
-    node* neighbor[2]
+    node* neighbor[2] # [left_ptr, right_ptr]
 }
 ```
 
-### Flag Data
-
-- `flag_r`
-  - going right `[1]` 
-- `flag_l`
-  - going left `[0]`
-- `buffer`
-  - do nothing / ignore
-   
-```c
-update_flag(int* flag, data){
-    if (data == flag_r){
-        *flag = flag_r
-    }
-    else if (data == flag_l){
-        *flag = flag_l
-    }
-    else if (data == buffer){
-        do nothing
-    }
-    else {
-        do nothing
-    }
-}
-```
-- 除了第一次外 (default `flag= flag_r`), 讀到 `flag data` 時要確認
-  - 兩邊都不是 `NULL`
-    - 用新的 flag 繼續
-  - 有一邊是 `NULL`
-    - 結束 
-
-- 特性
-  - Every list is bounded by node with flag data, and paired with `L` and `R`
-
+### Read a list
 
 
 ## Enter
