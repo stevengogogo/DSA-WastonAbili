@@ -103,16 +103,18 @@ int leave(list* line){
     }
 }
 
-void enter(list* line, int log){
+int enter(list* line, int log){
     node* new = init_node(log);
 
     if(line->str == NULL){ //start a new line
         assert(line->end == NULL); //null line
         line->str = new;
         line->end = new;
+
+        return 1;
     }
 
-    else{
+    else if (line->str != NULL && line->end != NULL){ 
         int flag = get_flag2null(line->end);
 
         if (flag == 2){
@@ -128,5 +130,41 @@ void enter(list* line, int log){
 
         // move terminal to new
         line->end = new;
+
+        return 1;
+    }
+
+    else {
+        return -1;
+    }
+}
+
+void migrate(list* src, list* dst){
+    if (src->str == NULL){
+        // src is null
+    }
+    
+    else {
+        if (dst->str == NULL){ // dst is null
+            assert(src->end != NULL);
+            //swap terminals
+            dst->str = src->end;
+            dst->end = src->str;
+            *src = init_list(); //clear list
+        }
+        else { // neither src nor dst are null
+
+            // Get direction to null
+            int flag_src_null = get_flag2null(src->end);
+            int flag_dst_null = get_flag2null(dst->end);
+
+            // Bridging
+            src->end->ngb[flag_src_null] = dst->end;
+            dst->end->ngb[flag_dst_null] = src->end;
+
+            // Reset terminals
+            dst->end = src->str;
+            *src = init_list();
+        }
     }
 }

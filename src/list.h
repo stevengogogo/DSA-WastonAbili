@@ -47,7 +47,7 @@ int get_flag2dst(node* src, node* dst);
 
 /* Return 1 if one element is pop; -1 for none*/
 int leave(list*);
-void enter(list*, int log);
+int enter(list*, int log);
 void migrate(list* src, list* dst);
 
 #endif

@@ -71,4 +71,27 @@ void test_flag(void){
     TEST_ASSERT(get_flag2null(a) == 0);
 }
 
+
+void test_migrate(void){
+    list line[2];
+
+    for (int i=0;i<2;i++)
+        line[i] = init_list();
+
+    for (int i=0; i<100; i++)
+        enter(&line[0], i);
+    for (int i=0; i<45; i++)
+        leave(&line[0]);
+
+    migrate(&line[0], &line[1]);
+
+    TEST_ASSERT(line[0].str == NULL);
+    TEST_ASSERT(line[0].end == NULL);
+    TEST_ASSERT(line[1].str != NULL);
+    TEST_ASSERT(line[1].end != NULL);
+    
+    for (int i=0;i<2;i++)
+        kill_list(&line[i]);
+}
+
 #endif
