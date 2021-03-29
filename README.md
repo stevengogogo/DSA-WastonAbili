@@ -59,33 +59,114 @@ struct node{
 
 ### Read a list
 
+```julia
+function read(list)
+    if list.start != NULL { # 至少有一個
+      iter_read(first_node)
+    }
+    else { # 空集合
+      return 0
+    }
+end
+
+function iter_read(node){
+
+  flag = get_node_ptr_from_terminal(node) # 得到下個 node 的方向
+  
+  if (flag== -1){ #兩邊都是 NULL
+    print(node.data)
+    return 0
+  }
+  
+  ptr_pre = &first_node # 第一個 node 的位置
+  
+  while(node.neighbor[flag] != NULL){ # terminate at NULL
+    # move to new node
+    node = node.neihbor[flag]
+
+    # Print 
+    print(node.data)
+
+    # Update direction
+    if (node.neighbor[flag] == ptr_pre){ # case: turn back
+        flag = flag^1
+    }
+
+    # Move
+    ptr_pre = &node
+  }
+}
+
+
+function get_node_ptr_from_terminal(node){
+
+  left =  node.neigbhor[0] 
+  right = node.neighbor[1]
+
+  if left==NULL and right == NULL
+    return -1
+
+  if left != NULL and right == NULL
+    return 0
+  
+  if left == NULL and right != NULL
+    return 1
+
+  if left != NULL and right != NULL
+    return Error
+    
+}
+```
+
 
 ## Enter
 
 ![](img/Enter.png)
 
+- Pointers
+  - End node
+    - `NULL` to `new node`
+  - new node
+    - one -> End node
+    - the other -> `NULL`
 
-- New node
-  - link `.prev` to `last node`
-  - link `.next` to `End`
-- End node
-  - Link `.prev` to `new node`
-- Last node
-  - Link `.next` to `new node`
+```julia
+function EnterLine(list, new_node)
 
+  if list.end == NULL { # Enter an empty line 
+    list.start = &new_node
+    list.end = &new_node
+  }
 
-```pseudo
-function EnterLine(list*,log)
+  end_flag = get_NULL_from_terminal(list.end)
 
-int flag
+  # Pointer Assignment
+  list.end.neighbor[end_flag] = &new_node
+  new_node.neighbor[end_flag] = NULL
+  new_node.neighbor[end_flag^1] = list.end
 
-ptr_end  = list->end
-
-# check direction
-
-ptr_last = (list->end.prev == NULL) ? list->end.next
-
+  # Update END
+  list.end = &new_node
 end
+
+
+function get_NULL_from_terminal(node){
+
+  left =  node.neigbhor[0] 
+  right = node.neighbor[1]
+
+  if left==NULL and right == NULL
+    return Error
+
+  if left != NULL and right == NULL
+    return 1
+  
+  if left == NULL and right != NULL
+    return 0
+
+  if left != NULL and right != NULL
+    return -1
+}
 ```
 
 
@@ -93,9 +174,47 @@ end
 
 ![](img/Migrate.png)
 
+```julia
+function migrate(list src, list dst){
+
+  # Locate ends
+  end_src = src.end
+  end_dst = dst.end
+
+  # Get flag
+  src_flag = get_NULL_from_terminal(end_src)
+  dst_flag = get_NULL_from_terminal(end_dst)
+
+  # Bridging
+  end_src.neighbor[src_flag] = end_dst
+  end_dst.negihbor[dst_flag] = end_src
+
+  # Relocate the terminals
+  dst.end = src.start
+
+  # Clean up src 
+  src.start = NULL
+  src.end = NULL
+}
+```
+
+## Leave
+
+![](img/Leave.png)
 
 
-## Reverse a doubly linked list
+```julia
+
+function leave(list){
+  end_node = list.end
+
+  flag = get_node_ptr_from_terminal(end_node)
+  prev_node = end_node.neighbor[flag]
+  list.end =  prev_node
+
+  kill(end_node)
+}
+```
 
 
 ## Memory
