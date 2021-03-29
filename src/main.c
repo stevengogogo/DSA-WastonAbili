@@ -1,20 +1,34 @@
+/**
+ * @file main.c
+ * @author Shao-Ting Chiu (r07945001@ntu.edu.tw)
+ * @brief This project is for the DSA course 2021 at National Taiwan Unviersity. Homework 1 Problem 5.
+ * @version 0.1
+ * @date 2021-03-29
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "utils.h"
+#include "list.h"
 
 int main()
 {
-    
-    // newnumc("3434");
-    int a = 1;
-    int b = 3;
-    extm big;
-    //scanf("%s %s", a, b);
-    big = max(&a, &b);
 
-    //bigint* I = newnumc(a[1]);
-    printf("Compare a(=%d) and b(=%d): maximum equals to %d\n",a,b,big.extreme);
+    list l = init_list();
+
+    enter(&l, 3);
+    enter(&l, 4);
+
+    kill_list(&l);
+    //TEST_ASSERT( l.end == NULL );
+    //TEST_ASSERT( l.str == NULL );
+
+    //TEST_ASSERT(leave(&l) == -1); //release null line
+
 
     return 0;
 }

@@ -47,6 +47,11 @@ struct list{
 }
 ```
 
+### Array of lists
+
+```
+list[1000]
+```
 
 ### node
 
@@ -73,19 +78,20 @@ function iter_read(node){
 
   flag = get_node_ptr_from_terminal(node) # 得到下個 node 的方向
   
+  print(node)
+
   if (flag== -1){ #兩邊都是 NULL
-    print(node.data)
     return 0
   }
   
-  ptr_pre = &first_node # 第一個 node 的位置
+  ptr_pre = &node # 第一個 node 的位置
   
   while(node.neighbor[flag] != NULL){ # terminate at NULL
     # move to new node
     node = node.neihbor[flag]
 
     # Print 
-    print(node.data)
+    print(node)
 
     # Update direction
     if (node.neighbor[flag] == ptr_pre){ # case: turn back
@@ -114,7 +120,6 @@ function get_node_ptr_from_terminal(node){
 
   if left != NULL and right != NULL
     return Error
-    
 }
 ```
 
@@ -156,7 +161,7 @@ function get_NULL_from_terminal(node){
   right = node.neighbor[1]
 
   if left==NULL and right == NULL
-    return Error
+    return 2
 
   if left != NULL and right == NULL
     return 1
