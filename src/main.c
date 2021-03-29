@@ -18,16 +18,7 @@
 int main()
 {
 
-    list l = init_list();
-
-    enter(&l, 3);
-    enter(&l, 4);
-
-    kill_list(&l);
-    //TEST_ASSERT( l.end == NULL );
-    //TEST_ASSERT( l.str == NULL );
-
-    //TEST_ASSERT(leave(&l) == -1); //release null line
+    interact_scanf();
 
 
     return 0;

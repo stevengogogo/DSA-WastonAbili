@@ -4,7 +4,10 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <string.h>
 
+#define MAX_LINES 1010
+#define MAX_LEN_OPER_STR 100
 
 
 typedef struct _node{
@@ -49,5 +52,9 @@ int get_flag2dst(node* src, node* dst);
 int leave(list*);
 int enter(list*, int log);
 void migrate(list* src, list* dst);
+
+
+// interface
+void interact_scanf(void);
 
 #endif

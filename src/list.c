@@ -168,3 +168,45 @@ void migrate(list* src, list* dst){
         }
     }
 }
+
+
+// Interface
+
+void interact_scanf(void){
+    int k,n;
+    int a,b;
+    char oper[MAX_LEN_OPER_STR];
+
+    list lines[MAX_LINES];
+
+
+    scanf("%d", &k);
+    scanf("%d", &n);
+
+    for (int i=0;i<n; i++){
+        scanf("%s", oper);
+
+        if (strcmp(oper, "leave") == 0){
+            scanf("%d", &a);
+            leave(&lines[a]);
+        }
+
+        else if (strcmp(oper, "migrate") == 0){
+            scanf("%d%d", &a, &b);
+            migrate(&lines[a], &lines[b]);
+        }
+
+        else if (strcmp(oper, "enter") == 0){
+            scanf("%d%d", &a, &b);
+            enter(&lines[a], b);
+        }
+
+        else {
+            printf("Error");
+        }
+    }
+
+
+    //print_list(list);
+
+}
