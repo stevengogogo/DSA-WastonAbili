@@ -29,6 +29,57 @@ void kill_list(list* line){
     }
 }
 
+int PrintList(list* line){
+    if (line->str == NULL)
+        return 0;
+    else if (line->str != NULL && line->end != NULL){
+        return iter_read(line->str);
+    }
+    else {
+        return -1; // Error code
+    }
+}
+
+int printNode(node* nStr){
+    if (nStr->data < 0)
+        return -1;
+    printf("%d ", nStr->data);
+    return 0;
+}
+
+int iter_read(node* nStr){
+    int flag = get_flag2node(nStr);
+
+    assert(printNode(nStr) != -1 );
+
+    if (flag==-1) // With only one node
+        return 1;
+    
+    node* ptr_pre = nStr;
+    node* current_node = nStr->ngb[flag];
+    int len=1;
+
+    while(current_node != NULL){
+        //Print
+        assert(printNode(current_node) != -1);
+
+        // Update flat
+        if (current_node->ngb[flag] == ptr_pre)
+            flag = flag ^ 1; //xor
+        
+        //move
+        ptr_pre = current_node;
+        current_node = current_node->ngb[flag];
+
+        len++;
+    }
+
+    return len;
+
+}
+
+
+
 int get_flag2node(node* terminal_node){
 
      node* left =  terminal_node->ngb[0]; 
@@ -73,19 +124,18 @@ int leave(list* line){
     int flag;
     int flag_back;
 
-    node* last_n = NULL;
+    node* last_n = line->end;
     if(line->end != NULL){
         flag = get_flag2node(line->end);
         
         if (flag==-1){ // Only one element
             assert(line->str == line->end); // Assign to same node
-            free(line->end);
+            free(last_n);
             line->str = NULL;
             line->end = NULL;
             return 1;
         }
 
-        last_n = line->end;
 
         line->end = line->end->ngb[flag];
         // Get to pointer to last node
@@ -183,6 +233,11 @@ void interact_scanf(void){
     scanf("%d", &k);
     scanf("%d", &n);
 
+    //Initiate lines
+    for (int i=0;i<k; i++){
+        lines[i] = init_list();
+    }
+
     for (int i=0;i<n; i++){
         scanf("%s", oper);
 
@@ -206,7 +261,8 @@ void interact_scanf(void){
         }
     }
 
-
-    //print_list(list);
-
+    for (int i=0;i<k;i++){
+        if (PrintList(&lines[i]) > 0);
+            printf("\n");
+    }
 }
