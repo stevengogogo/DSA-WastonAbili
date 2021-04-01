@@ -24,6 +24,7 @@ typedef struct {
 // Constructor and Descructor
 node* init_node(int data);
 list init_list(void);
+void detach_list(list* line);
 void kill_node(node*);
 void kill_list(list*);
 
