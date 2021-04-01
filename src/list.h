@@ -1,3 +1,14 @@
+/**
+ * @file list.h
+ * @author Shao-Ting Chiu
+ * @brief Double linked list
+ * @version 0.1
+ * @date 2021-04-01
+ * 
+ * @copyright Copyright (c) 2021
+ * 
+ */
+
 #ifndef LIST_H
 #define LIST_H
 
