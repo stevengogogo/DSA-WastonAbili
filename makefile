@@ -36,7 +36,7 @@ RUNTEST: MERGETEST
 	gcc -g3 -o $(testbuild)/test.out test_TEMP/*.c
 	./$(testbuild)/test.out 
 
-TEST: MERGETEST RUNTEST cleantest
+TEST: MERGETEST RUNTEST cleantest TESTD
 
 
 RUN:
@@ -59,4 +59,5 @@ MERGE_MAIN:
 	$(CCm) $(src_folder)/main.c  build/main.c
 	$(CC) -o build/main_test_build.out build/main.c
 
-
+TESTD: BUILD
+	sudo bash ./test/test.sh

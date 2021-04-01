@@ -43,7 +43,7 @@ int PrintList(list* line){
 int printNode(node* nStr){
     if (nStr->data < 0)
         return -1;
-    printf("%d ", nStr->data);
+    printf("%d", nStr->data);
     return 0;
 }
 
@@ -51,6 +51,7 @@ int iter_read(node* nStr){
     int flag = get_flag2node(nStr);
 
     assert(printNode(nStr) != -1 );
+    printf(" "); //spacing
 
     if (flag==-1) // With only one node
         return 1;
@@ -62,7 +63,8 @@ int iter_read(node* nStr){
     while(current_node != NULL){
         //Print
         assert(printNode(current_node) != -1);
-
+        //Spacing
+        printf(" ");
         // Update flat
         if (current_node->ngb[flag] == ptr_pre)
             flag = flag ^ 1; //xor
@@ -225,6 +227,7 @@ void migrate(list* src, list* dst){
 void interact_scanf(void){
     int k,n;
     int a,b;
+    int ch=-1;
     char oper[MAX_LEN_OPER_STR];
 
     list lines[MAX_LINES];
@@ -262,7 +265,9 @@ void interact_scanf(void){
     }
 
     for (int i=0;i<k;i++){
-        if (PrintList(&lines[i]) > 0);
+        ch = PrintList(&lines[i]);
+        if (ch>0)
             printf("\n");
+        assert(ch!=-1); 
     }
 }
