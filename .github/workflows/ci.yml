@@ -37,7 +37,9 @@ jobs:
         sudo apt-get install build-essential
         gcc -v
         make -v
-      
+    - name: Terminfo
+      run: |
+        export TERMINFO=/usr/lib/terminfo
     - name: clean
       run: |
        rm -rf ./build/*
