@@ -50,7 +50,7 @@ int iter_read(node*);
  */
 int iter_read(node*);
 
-/* get the flag point to the node. This function assumes a node is linked to at least one node*/
+/** get the flag point to the node. This function assumes a node is linked to at least one node */
 int get_flag2node(node* terminal_node);
 
 int get_flag2null(node* terminal_node);
@@ -61,13 +61,13 @@ int get_flag2dst(node* src, node* dst);
 
 //Operations
 
-/* Return 1 if one element is pop; -1 for none*/
+/** Return 1 if one element is pop; -1 for none */
 int leave(list*);
 int enter(list*, int log);
 void migrate(list* src, list* dst);
 
 
-// interface
+/** interface */
 void interact_scanf(void);
 
 #endif
