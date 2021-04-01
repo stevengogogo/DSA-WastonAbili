@@ -3,14 +3,13 @@
 echo ""
 echo "$(tput setaf 2; tput bold)Start test: Input/Output $(tput sgr0)"
 
-for i in {0..1};
+for i in {0..3};
 do
     echo "$(tput setaf 5)Test File: $i.in$(tput sgr0)";
 
 
     ./build/main.out < test/data/$i.in ""  > test/data/$i-EST.out; 
 
-    DIFF= $(diff test/data/$i-EST.out test/data/$i.out);
 
     if diff -q test/data/$i-EST.out test/data/$i.out;
     then
