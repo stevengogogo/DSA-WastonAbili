@@ -75,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Double linked list.  
+<p>Double linked list. This implementation provides O(1) complexity for reversing. See main page for details. This implementataion sacrifices the speed of reading. It required the check of the flag to next node when moving from one node to another. However, HW1 P5 only needs to read the lines once. Noted that the direction of the next node is updated by XOR operation, so this double linked list is also known as XOR double linked list (<a href="https://en.wikipedia.org/wiki/XOR_linked_list">https://en.wikipedia.org/wiki/XOR_linked_list</a>).  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
@@ -86,7 +86,7 @@ Include dependency graph for list.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h__incl.png" border="0" usemap="#asrc_2list_8h" alt=""/></div>
 <map name="asrc_2list_8h" id="asrc_2list_8h">
-<area shape="rect" title="Double linked list." alt="" coords="132,5,203,32"/>
+<area shape="rect" title="Double linked list. This implementation provides O(1) complexity for reversing. See main page for det..." alt="" coords="132,5,203,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,65,107"/>
 <area shape="rect" title=" " alt="" coords="89,80,157,107"/>
 <area shape="rect" title=" " alt="" coords="181,80,244,107"/>
@@ -98,7 +98,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="list_8h__dep__incl.png" border="0" usemap="#asrc_2list_8hdep" alt=""/></div>
 <map name="asrc_2list_8hdep" id="asrc_2list_8hdep">
-<area shape="rect" title="Double linked list." alt="" coords="70,5,141,32"/>
+<area shape="rect" title="Double linked list. This implementation provides O(1) complexity for reversing. See main page for det..." alt="" coords="70,5,141,32"/>
 <area shape="rect" href="main_8c.html" title="This project is for the DSA course 2021 at National Taiwan Unviersity. Homework 1 Problem 5." alt="" coords="5,80,88,107"/>
 <area shape="rect" href="test__list_8h_source.html" title=" " alt="" coords="112,80,216,107"/>
 </map>
@@ -156,30 +156,66 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>printNode</b> (<a clas
 <tr class="separator:a319c551a4287df2828fbf5317c4e07a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00bbad370599bd159d9a713cb468057f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a00bbad370599bd159d9a713cb468057f">get_flag2node</a> (<a class="el" href="struct__node.html">node</a> *terminal_node)</td></tr>
 <tr class="separator:a00bbad370599bd159d9a713cb468057f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88bc2663ddfb81053feeaba57b626c12"><td class="memItemLeft" align="right" valign="top"><a id="a88bc2663ddfb81053feeaba57b626c12"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_flag2null</b> (<a class="el" href="struct__node.html">node</a> *terminal_node)</td></tr>
+<tr class="memitem:a88bc2663ddfb81053feeaba57b626c12"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a88bc2663ddfb81053feeaba57b626c12">get_flag2null</a> (<a class="el" href="struct__node.html">node</a> *terminal_node)</td></tr>
+<tr class="memdesc:a88bc2663ddfb81053feeaba57b626c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the flag to reach NULL. The index is returned to get the node-&gt;ngb[index] = NULL.  <a href="list_8h.html#a88bc2663ddfb81053feeaba57b626c12">More...</a><br /></td></tr>
 <tr class="separator:a88bc2663ddfb81053feeaba57b626c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab29298c606a579d950fcc04155280cdd"><td class="memItemLeft" align="right" valign="top"><a id="ab29298c606a579d950fcc04155280cdd"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_flag2dst</b> (<a class="el" href="struct__node.html">node</a> *src, <a class="el" href="struct__node.html">node</a> *dst)</td></tr>
 <tr class="separator:ab29298c606a579d950fcc04155280cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f62623c59d8b0dfeac3b53447e318e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a0f62623c59d8b0dfeac3b53447e318e5">leave</a> (<a class="el" href="structlist.html">list</a> *)</td></tr>
 <tr class="separator:a0f62623c59d8b0dfeac3b53447e318e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1d6e8d9e6573ea6288aff74d26ab6db"><td class="memItemLeft" align="right" valign="top"><a id="af1d6e8d9e6573ea6288aff74d26ab6db"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>enter</b> (<a class="el" href="structlist.html">list</a> *, int log)</td></tr>
+<tr class="memitem:af1d6e8d9e6573ea6288aff74d26ab6db"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#af1d6e8d9e6573ea6288aff74d26ab6db">enter</a> (<a class="el" href="structlist.html">list</a> *, int log)</td></tr>
+<tr class="memdesc:af1d6e8d9e6573ea6288aff74d26ab6db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Insert new element.  <a href="list_8h.html#af1d6e8d9e6573ea6288aff74d26ab6db">More...</a><br /></td></tr>
 <tr class="separator:af1d6e8d9e6573ea6288aff74d26ab6db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95f75b44f8e76489dacb1cc35731bf40"><td class="memItemLeft" align="right" valign="top"><a id="a95f75b44f8e76489dacb1cc35731bf40"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>migrate</b> (<a class="el" href="structlist.html">list</a> *src, <a class="el" href="structlist.html">list</a> *dst)</td></tr>
+<tr class="memitem:a95f75b44f8e76489dacb1cc35731bf40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a95f75b44f8e76489dacb1cc35731bf40">migrate</a> (<a class="el" href="structlist.html">list</a> *src, <a class="el" href="structlist.html">list</a> *dst)</td></tr>
 <tr class="separator:a95f75b44f8e76489dacb1cc35731bf40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a518e1c993b654a08f5eb3cf84d9646c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a518e1c993b654a08f5eb3cf84d9646c2">interact_scanf</a> (void)</td></tr>
 <tr class="separator:a518e1c993b654a08f5eb3cf84d9646c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Double linked list. </p>
+<div class="textblock"><p>Double linked list. This implementation provides O(1) complexity for reversing. See main page for details. This implementataion sacrifices the speed of reading. It required the check of the flag to next node when moving from one node to another. However, HW1 P5 only needs to read the lines once. Noted that the direction of the next node is updated by XOR operation, so this double linked list is also known as XOR double linked list (<a href="https://en.wikipedia.org/wiki/XOR_linked_list">https://en.wikipedia.org/wiki/XOR_linked_list</a>). </p>
 <dl class="section author"><dt>Author</dt><dd>Shao-Ting Chiu </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2021-04-01</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2021 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="af1d6e8d9e6573ea6288aff74d26ab6db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1d6e8d9e6573ea6288aff74d26ab6db">&#9670;&nbsp;</a></span>enter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int enter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist.html">list</a> *&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>log</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Insert new element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">log</td><td>new data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int <code>1</code> for success adding; <code>-1</code> as error code </dd></dl>
+
+</div>
+</div>
 <a id="a00bbad370599bd159d9a713cb468057f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00bbad370599bd159d9a713cb468057f">&#9670;&nbsp;</a></span>get_flag2node()</h2>
 
@@ -199,6 +235,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>migrate</b> (<a class
 
 </div>
 </div>
+<a id="a88bc2663ddfb81053feeaba57b626c12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88bc2663ddfb81053feeaba57b626c12">&#9670;&nbsp;</a></span>get_flag2null()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_flag2null </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__node.html">node</a> *&#160;</td>
+          <td class="paramname"><em>terminal_node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the flag to reach NULL. The index is returned to get the node-&gt;ngb[index] = NULL. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">terminal_node</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int <code>2</code> for two NULL neigbhors, <code>0</code> and <code>1</code> for flags. </dd></dl>
+
+</div>
+</div>
 <a id="a518e1c993b654a08f5eb3cf84d9646c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a518e1c993b654a08f5eb3cf84d9646c2">&#9670;&nbsp;</a></span>interact_scanf()</h2>
 
@@ -214,7 +277,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>migrate</b> (<a class
         </tr>
       </table>
 </div><div class="memdoc">
-<p>interface </p>
+<p>interface. Use <code>stdin</code> for manipulating the linked lists </p>
 
 </div>
 </div>
@@ -255,6 +318,41 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>migrate</b> (<a class
       </table>
 </div><div class="memdoc">
 <p>Return 1 if one element is pop; -1 for none </p>
+
+</div>
+</div>
+<a id="a95f75b44f8e76489dacb1cc35731bf40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95f75b44f8e76489dacb1cc35731bf40">&#9670;&nbsp;</a></span>migrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void migrate </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structlist.html">list</a> *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structlist.html">list</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">src</td><td>source line </td></tr>
+    <tr><td class="paramname">dst</td><td>destination line </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

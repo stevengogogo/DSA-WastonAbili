@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['leave_5',['leave',['../list_8h.html#a0f62623c59d8b0dfeac3b53447e318e5',1,'list.c']]],
-  ['list_6',['list',['../structlist.html',1,'']]],
-  ['list_2eh_7',['list.h',['../list_8h.html',1,'']]]
+  ['interact_5fscanf_5',['interact_scanf',['../list_8h.html#a518e1c993b654a08f5eb3cf84d9646c2',1,'list.c']]],
+  ['iter_5fread_6',['iter_read',['../list_8h.html#a319c551a4287df2828fbf5317c4e07a8',1,'list.c']]]
 ];
