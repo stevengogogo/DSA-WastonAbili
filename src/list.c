@@ -278,7 +278,7 @@ void interact_scanf(void){
 
     for (int i=0;i<k;i++){
         ch = PrintList(&lines[i]);
-        if (ch>0)
+        if (i!=k-1)
             printf("\n");
         assert(ch!=-1); 
     }
