@@ -19,7 +19,13 @@ list init_list(){
     return line;
 }
 
+void detach_list(list* line){
+    line->str = NULL;
+    line->end = NULL;
+}
+
 void kill_node(node* n){
+    n->data = -1;
     free(n);
 }
 
@@ -132,9 +138,9 @@ int leave(list* line){
         
         if (flag==-1){ // Only one element
             assert(line->str == line->end); // Assign to same node
-            free(last_n);
             line->str = NULL;
             line->end = NULL;
+            kill_node(last_n);
             return 1;
         }
 
@@ -146,7 +152,7 @@ int leave(list* line){
 
         line->end->ngb[flag_back] = NULL;
         
-        free(last_n);
+        kill_node(last_n);
 
         return 1;
     }
@@ -202,13 +208,19 @@ void migrate(list* src, list* dst){
             //swap terminals
             dst->str = src->end;
             dst->end = src->str;
-            *src = init_list(); //clear list
+            detach_list(src); //clear list
         }
         else { // neither src nor dst are null
 
             // Get direction to null
             int flag_src_null = get_flag2null(src->end);
             int flag_dst_null = get_flag2null(dst->end);
+            
+            // For 1 element
+            if (flag_src_null == 2)
+                flag_src_null = 1;
+            if (flag_dst_null == 2)
+                flag_dst_null = 1;
 
             // Bridging
             src->end->ngb[flag_src_null] = dst->end;
@@ -216,7 +228,7 @@ void migrate(list* src, list* dst){
 
             // Reset terminals
             dst->end = src->str;
-            *src = init_list();
+            detach_list(src); //clear list
         }
     }
 }
@@ -270,4 +282,8 @@ void interact_scanf(void){
             printf("\n");
         assert(ch!=-1); 
     }
+
+    //kill
+    for (int i=0;i<k;i++)
+        kill_list(&lines[i]);
 }
