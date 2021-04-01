@@ -1,7 +1,7 @@
 /**
  * @file main.c
  * @author Shao-Ting Chiu (r07945001@ntu.edu.tw)
- * @brief This project is for the DSA course 2021 at National Taiwan Unviersity. Homework 1 Problem 5.
+ * @brief This project is for the DSA course 2021 at National Taiwan Unviersity. Homework 1 Problem 5. See https://stevengogogo.github.io/DSA-WastonAbili/ for details
  * @version 0.1
  * @date 2021-03-29
  * 

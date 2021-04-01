@@ -1,7 +1,7 @@
 /**
  * @file list.h
  * @author Shao-Ting Chiu
- * @brief Double linked list. This implementation provides O(1) complexity for reversing. See main page for details. This implementataion sacrifices the speed of reading. It required the check of the flag to next node  when moving from one node to another. However, HW1 P5 only needs to read the lines once. Noted that the direction of the next node is updated by XOR operation, so this double linked list is also known as XOR double linked list (https://en.wikipedia.org/wiki/XOR_linked_list).
+ * @brief Double linked list. This implementation provides O(1) complexity for reversing. See main page for details. This implementataion sacrifices the speed of reading. It requires the check of the flag to the next node  when moving from one node to another. However, HW1 P5 only needs to read the lines once. Noted that the direction of the next node is updated by XOR operation, so this double linked list is also known as XOR double linked list (https://en.wikipedia.org/wiki/XOR_linked_list).
  * @version 0.1
  * @date 2021-04-01
  * 
