@@ -6,7 +6,11 @@
  * @date 2021-03-29
  * 
  * @copyright Copyright (c) 2021
- * 
+ * @ref 
+ *   - Testing with linux command. Thanks to Mr. FONG KA HOU
+ *   - XOR linked list. [[wiki](https://en.wikipedia.org/wiki/XOR_linked_list)]
+ *   - Image (Edite on Diagrams)
+ *   - Github Repo (private): https://github.com/stevengogogo/DSA-WastonAbili
  */
 
 
