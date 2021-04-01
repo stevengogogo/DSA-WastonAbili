@@ -106,8 +106,7 @@ $(function() {
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a319c551a4287df2828fbf5317c4e07a8">iter_read</a>(<a class="code" href="struct__node.html">node</a>*);</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/* get the flag point to the node. This function assumes a node is linked to at least one node*/</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">int</span> get_flag2node(<a class="code" href="struct__node.html">node</a>* terminal_node);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a00bbad370599bd159d9a713cb468057f">get_flag2node</a>(<a class="code" href="struct__node.html">node</a>* terminal_node);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">int</span> get_flag2null(<a class="code" href="struct__node.html">node</a>* terminal_node);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
@@ -117,17 +116,18 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">//Operations</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/* Return 1 if one element is pop; -1 for none*/</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">int</span> leave(<a class="code" href="structlist.html">list</a>*);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">int</span> <a class="code" href="list_8h.html#a0f62623c59d8b0dfeac3b53447e318e5">leave</a>(<a class="code" href="structlist.html">list</a>*);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">int</span> enter(<a class="code" href="structlist.html">list</a>*, <span class="keywordtype">int</span> log);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> migrate(<a class="code" href="structlist.html">list</a>* src, <a class="code" href="structlist.html">list</a>* dst);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">// interface</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> interact_scanf(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="list_8h.html#a518e1c993b654a08f5eb3cf84d9646c2">interact_scanf</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="alist_8h_html_a00bbad370599bd159d9a713cb468057f"><div class="ttname"><a href="list_8h.html#a00bbad370599bd159d9a713cb468057f">get_flag2node</a></div><div class="ttdeci">int get_flag2node(node *terminal_node)</div><div class="ttdef"><b>Definition:</b> list.c:91</div></div>
+<div class="ttc" id="alist_8h_html_a0f62623c59d8b0dfeac3b53447e318e5"><div class="ttname"><a href="list_8h.html#a0f62623c59d8b0dfeac3b53447e318e5">leave</a></div><div class="ttdeci">int leave(list *)</div><div class="ttdef"><b>Definition:</b> list.c:131</div></div>
 <div class="ttc" id="alist_8h_html_a319c551a4287df2828fbf5317c4e07a8"><div class="ttname"><a href="list_8h.html#a319c551a4287df2828fbf5317c4e07a8">iter_read</a></div><div class="ttdeci">int iter_read(node *)</div><div class="ttdoc">Read the linked list from the first node to the last. Which is linked to the NULL.</div><div class="ttdef"><b>Definition:</b> list.c:56</div></div>
+<div class="ttc" id="alist_8h_html_a518e1c993b654a08f5eb3cf84d9646c2"><div class="ttname"><a href="list_8h.html#a518e1c993b654a08f5eb3cf84d9646c2">interact_scanf</a></div><div class="ttdeci">void interact_scanf(void)</div><div class="ttdef"><b>Definition:</b> list.c:239</div></div>
 <div class="ttc" id="astruct__node_html"><div class="ttname"><a href="struct__node.html">_node</a></div><div class="ttdef"><b>Definition:</b> list.h:24</div></div>
 <div class="ttc" id="astructlist_html"><div class="ttname"><a href="structlist.html">list</a></div><div class="ttdef"><b>Definition:</b> list.h:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
