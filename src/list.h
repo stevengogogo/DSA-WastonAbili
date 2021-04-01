@@ -24,18 +24,20 @@ typedef struct {
 // Constructor and Descructor
 node* init_node(int data);
 list init_list(void);
+void detach_list(list* line);
 void kill_node(node*);
 void kill_list(list*);
 
-int PrintList(list);
-
+int PrintList(list*);
+int printNode(node* nStr);
+int iter_read(node*);
 
 /**
  * @brief Read the linked list from the first node to the last. Which is linked to the NULL
  * 
  * @return int -1 for error report
  */
-int iter_read(node);
+int iter_read(node*);
 
 /* get the flag point to the node. This function assumes a node is linked to at least one node*/
 int get_flag2node(node* terminal_node);
